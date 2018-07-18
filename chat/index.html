@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Its a Test</title>
+</head>
+
+<body id="chat">
+    <form v-on="submit: send">
+        <input v-model="message">
+        <button>Send</button>
+    </form>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script>
+        var socket = io();
+
+        new Vue({
+            el: '#chat',
+
+            data: {
+                message: ''
+            },
+
+            methods: {
+                send: function(e){
+                    socket.emit('chat.message', this.message);
+
+                    e.preventDefault();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
