@@ -9,7 +9,7 @@ class Sprite {
         this.framesMax = framesMax
         this.framesCurrent = 0 
         this.framesElapsed = 0
-        this.framesHold = 5 
+        this.framesHold = 10
         this.offset = offset
     }
 
@@ -28,7 +28,7 @@ class Sprite {
     }
 
     animateFrames() {
-        if(this.framesElapsed % this.framesHold == 0){
+        if(this.framesElapsed % this.framesHold === 0){
             if(this.framesCurrent < this.framesMax - 1){
                 this.framesCurrent++
             }else{
